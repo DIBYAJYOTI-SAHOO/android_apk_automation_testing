@@ -1,3 +1,4 @@
+# android apk automation testing - POST IMAGE
 import time
 import unittest
 from appium import webdriver
@@ -8,6 +9,7 @@ from time import sleep
 
 class Atg_app(unittest.TestCase):
     def setUp(self):
+        # setup for the test 
         desired_cap = {
             "deviceName": "emulator-5554",
             "platformName": "android",
@@ -24,10 +26,13 @@ class Atg_app(unittest.TestCase):
 
 
     def test_LoginWithRightCredential(self):
+        #Testing the ATG application
         self.driver.implicitly_wait(30)
+        # click on Get Started bar
         get_started = self.driver.find_element_by_id("com.ATG.World:id/getStartedTv")
         get_started.click()
         time.sleep(1)
+        # Click on the Sign-in button for go to login page
         login_email = self.driver.find_element_by_id("com.ATG.World:id/login_email")
         login_email.click()
         email = self.driver.find_element_by_id("com.ATG.World:id/email")
@@ -38,6 +43,7 @@ class Atg_app(unittest.TestCase):
         signin.click()
         print("test_LoginWithRightCredential passed")
 
+# start of python script
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(Atg_app)
     unittest.TextTestRunner(verbosity=1).run(suite)
